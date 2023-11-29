@@ -41,7 +41,7 @@ jobs:
     
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       #- name: Build and Run Tests
         #run: mvn test --batch-mode --fail-at-end
       - run: mvn -B package --file pom.xml -DskipTests 
