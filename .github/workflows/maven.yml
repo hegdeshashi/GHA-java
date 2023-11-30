@@ -102,6 +102,11 @@ jobs:
 
 #docker run nginx:alpine
             #docker build . -t hegdeshashi/agility:${{ steps.bump.outputs.jar_version }} -f Dockerfile
+        - name: Login to DockerHub
+          uses: docker/login-action@v1
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}
         - name: Docker push
           run: |
             docker push hegdeshashi/agility:test
