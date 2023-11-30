@@ -104,4 +104,4 @@ jobs:
             #docker build . -t hegdeshashi/agility:${{ steps.bump.outputs.jar_version }} -f Dockerfile
         - name: Docker push
           run: |
-            docker push hegdeshashi/agility:${{ steps.bump.outputs.jar_version }}
+            docker push hegdeshashi/agility:test
