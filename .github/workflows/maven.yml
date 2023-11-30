@@ -107,4 +107,4 @@ jobs:
             password: ${{ secrets.DOCKERHUB_TOKEN }}
         - name: Docker push
           run: |
-            docker push hegdeshashi/agility:test
+            docker push hegdeshashi/agility:${{ steps.current-time.outputs.formattedTime }}
