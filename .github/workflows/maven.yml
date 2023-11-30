@@ -98,7 +98,9 @@ jobs:
           #  password: ${{ secrets.DOCKERHUB_TOKEN }}
         - name: Docker build
           run: |
-            docker run nginx:alpine
+            docker build -t hegdeshashi/agility:${{ steps.bump.outputs.jar_version }} -f Dockerfile .
+
+#docker run nginx:alpine
             #docker build . -t hegdeshashi/agility:${{ steps.bump.outputs.jar_version }} -f Dockerfile
         - name: Docker push
           run: |
