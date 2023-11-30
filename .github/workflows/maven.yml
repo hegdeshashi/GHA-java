@@ -14,12 +14,7 @@ on:
       Artifact:
         description: 'The environment to deploy to'
         required: true
-        default: 'production'
-        type: choice
-        options:
-          - production
-          - qa
-          - dev
+        type: string
   #push:
    # branches: [ "main" ]
   #pull_request:
