@@ -119,7 +119,6 @@ jobs:
           run: |
             docker push hegdeshashi/agility:${{ github.event.inputs.Artifact }}-${{ steps.current-time.outputs.formattedTime }}
   SAST-Snyk:
-    #if: github.event.inputs.SAST-Snyk == 'true' && (needs.Artifact.result == 'success' || needs.Artifact.result == 'skipped') && (needs.Test.result == 'success' || needs.Test.result == 'skipped')
     runs-on: ubuntu-latest
     needs: [Artifact,Test]
     steps:
