@@ -16,9 +16,9 @@ on:
         required: true
         type: choice
         options:
-          - qa
-          - dev
-          - production
+          - Dev
+          - QA
+          - Prod
   #push:
    # branches: [ "main" ]
   #pull_request:
