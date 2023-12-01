@@ -112,7 +112,7 @@ jobs:
         - name: Docker build
           run: |
             #docker build -t hegdeshashi/agility:test -f Dockerfile .
-            docker build -t hegdeshashi/agility:${{ github.event.inputs.Artifact }}-${{ steps.current-time.outputs.formattedTime }} -f Dockerfile .
+            docker build -t hegdeshashi/agility:${{ github.event.inputs.Artifact }} -f Dockerfile .
         - name: Login to DockerHub
           uses: docker/login-action@v1
           with:
@@ -120,5 +120,5 @@ jobs:
             password: ${{ secrets.DOCKERHUB_TOKEN }}
         - name: Docker push
           run: |
-            docker push hegdeshashi/agility:${{ github.event.inputs.Artifact }}-${{ steps.current-time.outputs.formattedTime }}
+            docker push hegdeshashi/agility:${{ github.event.inputs.Artifact }}
  
