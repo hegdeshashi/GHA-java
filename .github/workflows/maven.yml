@@ -62,13 +62,32 @@ jobs:
       - run: mvn -B package --file pom.xml -DskipTests 
       - run: mvn install -DskipTests
       - run: mvn clean test --batch-mode -Dmaven.test.failure.ignore=true
+  Publish-job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    needs: [Test]
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    - run: mvn --batch-mode --update-snapshots verify
+    - run: mkdir staging && cp target/*.jar staging
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Package
+        path: staging
+        
   Artifact:
       #if: github.event.inputs.Artifact == 'true'  
       runs-on: ubuntu-latest
       permissions:
         contents: read
         packages: write
-      needs: [Test]
+      needs: [Publish-job]
       steps:
         - uses: actions/checkout@v3
         - uses: actions/setup-java@v1
