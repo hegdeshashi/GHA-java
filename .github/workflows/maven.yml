@@ -139,6 +139,9 @@ jobs:
             docker push hegdeshashi/agility:${{ github.event.inputs.Artifact }}-${{ steps.current-time.outputs.formattedTime }}
   SAST-Snyk:
     runs-on: ubuntu-latest
+    permissions:
+        contents: read
+        packages: write
     needs: [Artifact]
     steps:
       - uses: actions/checkout@master
