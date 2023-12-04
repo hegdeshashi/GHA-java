@@ -120,7 +120,7 @@ jobs:
             docker push hegdeshashi/agility:${{ github.event.inputs.Artifact }}-${{ steps.current-time.outputs.formattedTime }}
   SAST-Snyk:
     runs-on: ubuntu-latest
-    needs: [Artifact,Test]
+    needs: [Artifact]
     steps:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
