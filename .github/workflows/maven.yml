@@ -81,7 +81,14 @@ jobs:
       with:
         name: Package
         path: staging
-        
+    - name: Approval Action
+  # You may pin to the exact commit or the version.
+  # uses: ekeel/approval-action@892cc223bd83125b0788a6788814681acdfc6828
+      uses: ekeel/approval-action@v1.0.2
+      with:
+    # The GitHub token used to create the issue.
+        token: ${{ secrets.GIT_TOKEN }}
+      
   Artifact:
       #if: github.event.inputs.Artifact == 'true'  
       runs-on: ubuntu-latest
