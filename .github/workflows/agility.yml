@@ -101,19 +101,7 @@ jobs:
         # with:
          #   username: ${{ secrets.DOCKERHUB_USERNAME }}
           #  password: ${{ secrets.DOCKERHUB_TOKEN }}
-        - name: Send approval request
-          uses: peter-evans/create-issue-from-file@v2
-          with:
-            title: 'Push to Artifact Approval Request'
-            assignees: 'username'
-            labels: 'approval'
-            body: |
-              Please approve this deployment by commenting :+1: on this issue.
-        - name: Wait for approval
-          uses: andstor/wait-for-approval@v1
-          with:
-            issue-number: ${{ steps.send_approval_request.outputs.number }}
-            repository-token: ${{ secrets.GITHUB_TOKEN }}
+        
         - name: Docker build
           run: |
             #docker build -t hegdeshashi/agility:test -f Dockerfile .
